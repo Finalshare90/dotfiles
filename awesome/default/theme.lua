@@ -5,8 +5,7 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
-local wallpapers = {"~/wallpapers/currentWallpaper.png", "~/wallpapers/mal0Wallpaper.png", "~/wallpapers/CowboyBebopwallpaper1.jpg",
-"~/wallpapers/CowboyBebopwallpaper2.jpg", "~/wallpapers/CowboyBebopwallpaper3.png"}
+local wallpapers = {"Your wallpapers here"}
 local gfs = require("gears.filesystem")
 local debugAwesome = require("gears.debug")
 local themes_path = gfs.get_themes_dir()

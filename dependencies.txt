@@ -1,0 +1,8 @@
+1 - AwesomeWM (DUH)
+2 - Rofi and dmenu
+3 - VScodium
+4 - Xrandr
+5 - Kitty
+6 - Compton
+7 - LibreWolf
+8 - Neovim

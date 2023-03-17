@@ -3,6 +3,7 @@
 3 - VScodium
 4 - Xrandr
 5 - Kitty
-6 - Compton
+6 - Picom
 7 - LibreWolf
 8 - Neovim
+9 - Marktext

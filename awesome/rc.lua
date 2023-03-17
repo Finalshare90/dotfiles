@@ -248,12 +248,12 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({
         position = "top",
         screen = s,
-        opacity = 0.7,
+        opacity = 0.8,
         border_color = "#513b8a",
         border_width = 1,
         bg = "#39043E",
-        width = 1250,
-        height = 25,
+        width = 1340,
+        height = 24,
         shape = function(cr, width, height)
             gears.shape.rounded_rect(cr, width, height, RADIUS)
         end,
@@ -383,19 +383,10 @@ globalkeys = gears.table.join(
 
     -- dmenu
     awful.key({ modkey },            "r",     function ()
-         awful.util.spawn("dmenu_run") end,
+         awful.util.spawn("dmenu_run -l 5 -sf MidnightBlue -nb NavyBlue -sb MediumSlateBlue") end,
               {description = "run dmenu", group = "launcher"}),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
+
     -- rofi
     awful.key({ modkey }, "p", function() awful.util.spawn("rofi -show run  ") end,
               {description = "show the rofi", group = "launcher"})
@@ -636,5 +627,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 
 awful.util.spawn("xrandr -s 1280x768")
-awful.util.spawn("compton")
---awful.spawn.with_shell("feh --bg-fill ~/wallpapers/mal0Wallpaper.png")
+awful.util.spawn("picom -c")
+--awful.spawn.with_shell("feh --bg-fill ~/wallp|apers/mal0Wallpaper.png")

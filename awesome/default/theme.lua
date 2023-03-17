@@ -5,14 +5,21 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
-local wallpapers = {"Your wallpapers here"}
+local wallpapers = {"~/wallpapers/quintetodestefan.png",
+                    "~/wallpapers/CowboyBebopwallpaper1.jpg",
+                    "~/wallpapers/CowboyBebopwallpaper2.jpg",
+                    "~/wallpapers/CowboyBebopwallpaper3.png",
+                    "~/wallpapers/anime-girl-linuxmint.png",
+                    "~/wallpapers/komi_san_wall_1.jpg",
+                    "~/wallpapers/nagatoro_wall_1.png",
+                    }
 local gfs = require("gears.filesystem")
 local debugAwesome = require("gears.debug")
 local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "sans 8"
+theme.font          = "mononoki Nerd Font 10"
 
 theme.bg_normal     = "#39043E"
 theme.bg_focus      = "#1C032C"
@@ -63,8 +70,8 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = 1
-theme.menu_width  = 1000
+theme.menu_height = 25
+theme.menu_width  = 200
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -99,7 +106,8 @@ theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/m
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
  math.randomseed(os.time())
- local randomNum = math.random(5)
+ 
+ local randomNum = math.random(#wallpapers)
 
 theme.wallpaper = wallpapers[randomNum]
 

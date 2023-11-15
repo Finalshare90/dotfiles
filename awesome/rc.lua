@@ -2,6 +2,13 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+
+-- Wallpaper pointer
+local count = 1
+-- Wallpaper, set all of your wallpapers path here.
+local wallpapers = {}
+
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -298,8 +305,43 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
+function cast(vector, index)
+    
+    local castString = tostring(vector[index])
+
+    return castString
+end
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({modkey, }, "e",
+        function()
+            count = count + 1
+
+            if count > #wallpapers then
+                count = 1
+            end
+
+            local currenWallpaper= wallpapers[count]
+            gears.wallpaper.maximized(currenWallpaper, nil)
+            naughty.notify({text=currenWallpaper})
+        end, {description="next wallpaper", group="client"}
+    ),
+
+    awful.key({modkey, }, "q",
+    function()
+        count = count - 1
+        
+        if count == 0 then
+            count = #wallpapers
+        end
+
+        local currenWallpaper= wallpapers[count]
+        gears.wallpaper.maximized(currenWallpaper, nil)
+        naughty.notify({text=currenWallpaper})
+    end,
+    {description="previous wallpaper", group="client"}),
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -371,7 +413,7 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Control" }, "n",
               function ()
-                  local c = awful.client.restore()
+               local c = awful.client.restore()
                   -- Focus restored client
                   if c then
                     c:emit_signal(
@@ -388,7 +430,7 @@ globalkeys = gears.table.join(
 
 
     -- rofi
-    awful.key({ modkey }, "p", function() awful.util.spawn("rofi -show run  ") end,
+    awful.key({ modkey }, "p", function() awful.util.spawn("rofi -modi 'drun,run,window' -show run") end,
               {description = "show the rofi", group = "launcher"})
 )
 
@@ -626,6 +668,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 
-awful.util.spawn("xrandr -s 1280x768")
+--awful.util.spawn("xrandr -s 1280x768")
+awful.util.spawn("xrandr -s 1366x768")
 awful.util.spawn("picom -c")
 --awful.spawn.with_shell("feh --bg-fill ~/wallp|apers/mal0Wallpaper.png")

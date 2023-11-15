@@ -304,14 +304,6 @@ root.buttons(gears.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
-
-function cast(vector, index)
-    
-    local castString = tostring(vector[index])
-
-    return castString
-end
-
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({modkey, }, "e",
